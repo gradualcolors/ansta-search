@@ -24,7 +24,7 @@ $(document).on('jsonReady', searchFunction);
 
 function searchFunction(e) {
 
-		$('#ansta-search').on('keyup keypress', function(e) {
+		$('#ansta-search').on('keyup keypress touchend', function(e) {
 		  var keyCode = e.keyCode || e.which;
 		  if (keyCode === 13) { 
 			e.preventDefault();
@@ -48,7 +48,7 @@ function searchFunction(e) {
 						  output += '<div class="col-md-6 well mx-auto">';
 						  
 						  if (val.indrive != 'No'){
-						  output += '<div class="col-md-12 mx-auto"><center><img style="    width: 100%;" src="https://drive.google.com/thumbnail?id='+val.imageid+'&sz=w200-h113" alt="'+ val.cardnumberfile +'" /></center></div>';
+						  output += '<div class="col-md-12 mx-auto"><center><img style="    width: max-100%;" src="https://drive.google.com/thumbnail?id='+val.imageid+'&sz=w200-h113" alt="'+ val.cardnumberfile +'" /></center></div>';
 						  }
 						  else{
 						  output += '<div class="col-md-12 mx-auto"><div style="width:200px;height:113px;">Image Unavailable</div></div>'
@@ -93,7 +93,7 @@ function searchFunction(e) {
 	<p style="text-align:center;">Search tool to look for renders. It may lag a bit so please wait for it to load.</p>
 		<form id="ansta-search" role="form" style="
     max-width: 800px;
-    margin: 0 auto;">
+    margin: 0 auto;" onSubmit="return false;">
 			<div class="form-group">
 				<input type="input" class="form-control input-lg" id="txt-search" placeholder="Type your search character">
 			</div>
