@@ -19,18 +19,18 @@
       });
     });
 	
-$(document).on('jsonReady', whatever);
+$(document).on('jsonReady', searchFunction);
 		
-		
-$('#ansta-search').on('keyup keypress', function(e) {
-  var keyCode = e.keyCode || e.which;
-  if (keyCode === 13) { 
-    e.preventDefault();
-    return false;
-  }
-});
 
+function searchFunction(e) {
 
+		$('#ansta-search').on('keyup keypress', function(e) {
+		  var keyCode = e.keyCode || e.which;
+		  if (keyCode === 13) { 
+			e.preventDefault();
+			return false;
+		  }
+		});
 
 		  $('#txt-search').keyup(function(){
 		            var searchField = $(this).val();
@@ -68,7 +68,7 @@ $('#ansta-search').on('keyup keypress', function(e) {
 					  output += '</div>';
 					  $('#filter-records').html(output);
 		        });
-				});
+				};
 			
 			
 	</script>
