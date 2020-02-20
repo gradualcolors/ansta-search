@@ -43,12 +43,12 @@ function searchFunction(e) {
 					
 		            var output = '<div class="row">';
 		            var count = 1;
-					  $.each(data.rows, function(key, val){
+					  $.each(json.rows, function(key, val){
 						if ((val.charactername.search(regex) != -1) || (val.cardgachaeventname.search(regex) != -1)) {
 						  output += '<div class="col-md-6 well">';
 						  
 						  if (val.indrive != 'No'){
-						  output += '<div class="col-md-3"><img class="img-responsive" src="https://drive.google.com/thumbnail?id='+val.imageid+'&sz=w200-h113" alt="'+ val.cardnumberfile +'" /></div>';
+						  output += '<div class="col-md-3"><img src="https://drive.google.com/thumbnail?id='+val.imageid+'&sz=w200-h113" alt="'+ val.cardnumberfile +'" /></div>';
 						  }
 						  else{
 						  output += '<div class="col-md-3">Image Unavailable</div>'
