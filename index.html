@@ -72,10 +72,9 @@ $( document ).ready(function() {
 						  }
 						  count++;
 						  
-						 var getProgress = (count-1) / json.rows.length;
-						 var intProgress = Math.floor(getProgress);
+						 var getProgress = count-1;
 						 
-						 $('#progress').html("Progress: " + intProgress + "/" +json.rows.length);
+						 $('#progress').html("Progress: " + getProgress + "/" +json.rows.length);
 						}
 					  });
 					  output += '</div>';
