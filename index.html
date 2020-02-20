@@ -1,0 +1,59 @@
+<html>
+<head>
+  <title>Ensemble Stars Renders Search Tool</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+  $('#txt-search').keyup(function(){
+            var searchField = $(this).val();
+			if(searchField === '')  {
+				$('#filter-records').html('');
+				return;
+			}
+			
+            var regex = new RegExp(searchField, "i");
+			
+			
+			
+			$.getJSON('http://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJTeOk&columns=false', function(data) {  
+			
+			
+            var output = '<div class="row">';
+            var count = 1;
+			  $.each(data, function(key, val){
+				if ((val.cardgachaeventname.search(regex) != -1) || (val.charactername.search(regex) != -1)) {
+				  output += '<div class="col-md-6 well">';
+				  output += '<div class="col-md-3"><img class="img-responsive" src="'+val.imageid+'" alt="'+ val.cardnumberfile +'" /></div>';
+				  output += '<div class="col-md-7">';
+				  output += '<h5>' + val.charactername + '</h5>';
+				  output += '<p>' + val.cardgachaeventname + '</p>'
+				  output += '</div>';
+				  output += '</div>';
+				  if(count%2 == 0){
+					output += '</div><div class="row">'
+				  }
+				  count++;
+				}
+			  });
+			  output += '</div>';
+			  $('#filter-records').html(output);
+        });
+		});
+</script>
+</head>
+<body>
+<div class="container" style="padding:50px 250px;">
+	<form role="form">
+        <div class="form-group">
+          <input type="input" class="form-control input-lg" id="txt-search" placeholder="Type your search character">
+        </div>
+	</form>
+	<div id="filter-records"></div>
+  </div>
+ </body>
+  </html>
+
+		
