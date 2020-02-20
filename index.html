@@ -44,13 +44,20 @@ $.getJSON('http://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJTe
 					  $('#filter-records').html(output);
 		        });
 				});
+			
+			$('#ansta-search').on('keyup keypress', function(e) {
+  var keyCode = e.keyCode || e.which;
+  if (keyCode === 13) { 
+    e.preventDefault();
+    return false;
+  }
 			  });
 	</script>
 </head>
 
 <body>
 	<div class="container" style="padding:50px 250px;">
-		<form role="form">
+		<form id="ansta-search" role="form">
 			<div class="form-group">
 				<input type="input" class="form-control input-lg" id="txt-search" placeholder="Type your search character">
 			</div>
