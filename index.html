@@ -32,7 +32,7 @@ function searchFunction(e) {
 		  }
 		});*/
 
-		  $('#txt-search').on('keyup touchend', function(e){
+		  $('#searchBtn').on('click', function(e){
 		            var searchField = $(this).val();
 					if(searchField === '')  {
 						$('#filter-records').html('');
@@ -97,8 +97,9 @@ function searchFunction(e) {
 			<div class="form-group">
 				<input type="input" class="form-control input-lg" id="txt-search" placeholder="Type your search character">
 			</div>
+		<a href="#" class="btn btn-block btn-primary btn-primary" id="searchBtn">Enter</a>
 		</form>
-		<div id="filter-records"></div>
+		<div id="filter-records" style="padding:50px"></div>
 	</div>
 	</div>
 </body>
