@@ -33,7 +33,7 @@ $( document ).ready(function() {
 			 json = data;		  
 		  
 		  
-		            var searchField = $(this).val();
+		            var searchField = $('#txt-search').val();
 					if(searchField === '')  {
 						$('#filter-records').html('Please type in something.');
 						$("#searchBtn").css("pointer-events", "auto");
