@@ -20,34 +20,22 @@
 					
 					
 					
-					$.getJSON('http://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJTeOk&columns=false', function(data) {  
+$.getJSON('http://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJTeOk&columns=false', function(data) {  
 					
 					
-		            var output = '
-								<div class="row">';
+		            var output = '<div class="row">';
 		            var count = 1;
 					  $.each(data, function(key, val){
 						if ((val.cardgachaeventname.search(regex) != -1) || (val.charactername.search(regex) != -1)) {
-						  output += '
-									<div class="col-md-6 well">';
-						  output += '
-										<div class="col-md-3">
-											<img class="img-responsive" src="'+val.imageid+'" alt="'+ val.cardnumberfile +'" />
-										</div>';
-						  output += '
-										<div class="col-md-7">';
-						  output += '
-											<h5>' + val.charactername + '</h5>';
-						  output += '
-											<p>' + val.cardgachaeventname + '</p>'
-						  output += '
-										</div>';
-						  output += '
-									</div>';
+						  output += '<div class="col-md-6 well">';
+						  output += '<div class="col-md-3"><img class="img-responsive" src="'+val.imageid+'" alt="'+ val.cardnumberfile +'" /></div>';
+						  output += '<div class="col-md-7">';
+						  output += '<h5>' + val.charactername + '</h5>';
+						  output += '<p>' + val.cardgachaeventname + '</p>'
+						  output += '</div>';
+						  output += '</div>';
 						  if(count%2 == 0){
-							output += '
-								</div>
-								<div class="row">'
+							output += '</div><div class="row">'
 						  }
 						  count++;
 						}
