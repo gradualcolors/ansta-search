@@ -24,15 +24,15 @@ $(document).on('jsonReady', searchFunction);
 
 function searchFunction(e) {
 
-		$('#ansta-search').on('keyup keypress touchend', function(e) {
+	/*	$('#ansta-search').on('keyup keypress input', function(e) {
 		  var keyCode = e.keyCode || e.which;
 		  if (keyCode === 13) { 
 			e.preventDefault();
 			return false;
 		  }
-		});
+		});*/
 
-		  $('#txt-search').keyup(function(){
+		  $('#txt-search').on('keyup keypress input', function(e){
 		            var searchField = $(this).val();
 					if(searchField === '')  {
 						$('#filter-records').html('');
@@ -54,7 +54,7 @@ function searchFunction(e) {
 						  output += '<div class="col-md-12 mx-auto"><div style="width:200px;height:113px;">Image Unavailable</div></div>'
 						  }
 						  output += '<div class="col-md-12 mx-auto">';
-						  output += '<p>' + val.charactername + '</p>';
+						  output += '<p style="padding-top:5px;font-weight:bold;">' + val.charactername + '</p>';
 						  output += '<p><strong>Event/Gacha:</strong> ' + val.cardgachaeventname + '</p>'
 						  output += '<p><strong><a href="' + val.url + '">Download ' + val.cardnumberfile+'.png</a></strong></p>'
 						  output += '</div>';
