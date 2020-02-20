@@ -26,19 +26,21 @@ $( document ).ready(function() {
 		  
 		  $("#searchBtn").css("pointer-events", "none");
 
-		  
-		  var json = {};
-	
-			$.getJSON('https://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJTeOk&columns=false', function(data) {  	
-			 json = data;		  
-		  
-		  
-		            var searchField = $('#txt-search').val();
+		  var searchField = $('#txt-search').val();
 					if(searchField === '')  {
 						$('#filter-records').html('Please type in something.');
 						$("#searchBtn").css("pointer-events", "auto");
 						return;
 					}
+		  
+		  
+		  var json = {};
+	
+			$.getJSON('https://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJTeOk&columns=false&q='+searchField+', function(data) {  	
+			 json = data;		  
+		  
+		  
+		            
 					
 		            var regex = new RegExp(searchField, "i");					
 					
