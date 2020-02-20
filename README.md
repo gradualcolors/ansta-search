@@ -1,2 +1,3 @@
-#ansta-search
+ansta-search
+
 Ensemble Stars Renders Search Tool
