@@ -32,7 +32,7 @@ $( document ).ready(function() {
 		 $("#searchBtn").prop('disabled',true).addClass('disabled');
 
 		  var searchField = $('#txt-search').val();
-					if(searchField === '')  {
+					if(searchField.trim() === '')  {
 						$('#filter-records').html('Please type in something.');
 						$("#searchBtn").prop('disabled',false).removeClass('disabled');
 						return;
@@ -104,12 +104,12 @@ $( document ).ready(function() {
 <body>
 	<div class="container" style="padding:50px; width:100%">
 	<div style="text-align:center;">
-	<p style="text-align:center;">Search tool to look for renders. It may lag a bit so please wait for it to load.</p>
+	<p style="text-align:center;">Search tool to look for renders. It may lag a bit so please wait for it to load. A continuous work in progress.</p>
 		<form id="ansta-search" role="form" style="
     max-width: 800px;
     margin: 0 auto;" onSubmit="return false;">
 			<div class="form-group">
-				<input type="input" class="form-control input-lg" id="txt-search" placeholder="Type your search character">
+				<input type="input" class="form-control input-lg" id="txt-search" placeholder="Type in char, gacha, or event">
 			</div>
 		<a href="#" class="btn btn-block btn-primary btn-primary" id="searchBtn">Enter</a>
 		</form>
