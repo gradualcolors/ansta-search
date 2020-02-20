@@ -9,20 +9,10 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 
-	var json = {};
 	
-	$.getJSON('https://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJTeOk&columns=false', function(data) {  	
-	 json = data;
-	       $(function() {
-        // ...trigger the custom `jsonReady` event
-        $(document).trigger('jsonReady');
-      });
-    });
 	
-$(document).on('jsonReady', searchFunction);
+$( document ).ready(function() {
 		
-
-function searchFunction(e) {
 
 	/*	$('#ansta-search').on('keyup keypress input', function(e) {
 		  var keyCode = e.keyCode || e.which;
@@ -33,6 +23,17 @@ function searchFunction(e) {
 		});*/
 
 		  $('#searchBtn').on('click', function(e){
+		  
+		  $("#searchBtn").css("pointer-events", "none");
+
+		  
+		  var json = {};
+	
+			$.getJSON('https://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJTeOk&columns=false', function(data) {  	
+			 json = data;
+			  });
+		  
+		  
 		            var searchField = $(this).val();
 					if(searchField === '')  {
 						$('#filter-records').html('');
@@ -68,7 +69,9 @@ function searchFunction(e) {
 					  output += '</div>';
 					  $('#filter-records').html(output);
 		        });
-				};
+				
+				$("#searchBtn").css("pointer-events", "auto");
+				});
 			
 			
 	</script>
