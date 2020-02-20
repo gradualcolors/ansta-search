@@ -41,7 +41,7 @@ function searchFunction(e) {
 					
 		            var regex = new RegExp(searchField, "i");					
 					
-		            var output = '<div class="row row-eq-height">';
+		            var output = '<div class="row aligned-row">';
 		            var count = 1;
 					  $.each(json.rows, function(key, val){
 						if ((val.charactername.search(regex) != -1) || (val.cardgachaeventname.search(regex) != -1)) {
@@ -60,7 +60,7 @@ function searchFunction(e) {
 						  output += '</div>';
 						  output += '</div>';
 						  if(count%2 == 0){
-							output += '</div><div class="row row-eq-height">'
+							output += '</div><div class="row aligned-row">'
 						  }
 						  count++;
 						}
@@ -74,26 +74,15 @@ function searchFunction(e) {
 	</script>
 	
 	<style>
-	.row-eq-height > [class^=col] {
-  display: flex;
-  flex-direction: column;
+.aligned-row {
+    display: flex;
+    flex-flow: row wrap;
+
+    &::before {
+        display: block;
+    }
 }
 
-.row-eq-height > [class^=col]:last-of-type div {
-  margin: 10px;
-}
-
-.row-eq-height > [class^=col]:last-of-type div:first-of-type {
-  margin-top: 0;
-}
-
-.row-eq-height > [class^=col]:last-of-type div:last-of-type {
-  margin-bottom: 0;
-}
-
-.row-eq-height > [class^=col]:first-of-type .black {
-  flex-grow: 1;
-}
 
 	</style>
 </head>
