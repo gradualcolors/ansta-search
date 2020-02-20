@@ -25,7 +25,7 @@ $.getJSON('https://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJT
 					
 		            var output = '<div class="row">';
 		            var count = 1;
-					  $.each(data, function(key, val){
+					  $.each(data.rows, function(key, val){
 						if ((val.cardgachaeventname.search(regex) != -1) || (val.charactername.search(regex) != -1)) {
 						  output += '<div class="col-md-6 well">';
 						  output += '<div class="col-md-3"><img class="img-responsive" src="'+val.imageid+'" alt="'+ val.cardnumberfile +'" /></div>';
