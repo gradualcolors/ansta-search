@@ -41,26 +41,26 @@ function searchFunction(e) {
 					
 		            var regex = new RegExp(searchField, "i");					
 					
-		            var output = '<div class="row">';
+		            var output = '<div class="row row-eq-height">';
 		            var count = 1;
 					  $.each(json.rows, function(key, val){
 						if ((val.charactername.search(regex) != -1) || (val.cardgachaeventname.search(regex) != -1)) {
-						  output += '<div class="col-md-6 well">';
+						  output += '<div class="col-md-6 well mx-auto">';
 						  
 						  if (val.indrive != 'No'){
-						  output += '<div class="col-md-12 mx-auto"><img src="https://drive.google.com/thumbnail?id='+val.imageid+'&sz=w200-h113" alt="'+ val.cardnumberfile +'" /></div>';
+						  output += '<div class="col-md-12 mx-auto"><center><img src="https://drive.google.com/thumbnail?id='+val.imageid+'&sz=w200-h113" alt="'+ val.cardnumberfile +'" /></center></div>';
 						  }
 						  else{
 						  output += '<div class="col-md-12 mx-auto"><div style="width:200px;height:113px;">Image Unavailable</div></div>'
 						  }
 						  output += '<div class="col-md-12 mx-auto">';
-						  output += '<h5>' + val.charactername + '</h5>';
+						  output += '<p>' + val.charactername + '</p>';
 						  output += '<p><strong>Event/Gacha:</strong> ' + val.cardgachaeventname + '</p>'
 						  output += '<p><strong><a href="' + val.url + '">Download ' + val.cardnumberfile+'.png</a></strong></p>'
 						  output += '</div>';
 						  output += '</div>';
 						  if(count%2 == 0){
-							output += '</div><div class="row">'
+							output += '</div><div class="row row-eq-height">'
 						  }
 						  count++;
 						}
@@ -72,11 +72,35 @@ function searchFunction(e) {
 			
 			
 	</script>
+	
+	<style>
+	.row-eq-height > [class^=col] {
+  display: flex;
+  flex-direction: column;
+}
+
+.row-eq-height > [class^=col]:last-of-type div {
+  margin: 10px;
+}
+
+.row-eq-height > [class^=col]:last-of-type div:first-of-type {
+  margin-top: 0;
+}
+
+.row-eq-height > [class^=col]:last-of-type div:last-of-type {
+  margin-bottom: 0;
+}
+
+.row-eq-height > [class^=col]:first-of-type .black {
+  flex-grow: 1;
+}
+
+	</style>
 </head>
 
 <body>
 	<div class="container" style="padding:50px 250px;">
-	<p style="text-align:center;">Type character name to search</p>
+	<p style="text-align:center;">Search tool to look for renders. It may lag a bit so please wait for it to load.</p>
 		<form id="ansta-search" role="form">
 			<div class="form-group">
 				<input type="input" class="form-control input-lg" id="txt-search" placeholder="Type your search character">
