@@ -32,7 +32,7 @@ function searchFunction(e) {
 		  }
 		});*/
 
-		  $('#txt-search').on('keyup keypress input', function(e){
+		  $('#txt-search').on('keyup touchend', function(e){
 		            var searchField = $(this).val();
 					if(searchField === '')  {
 						$('#filter-records').html('');
@@ -51,7 +51,7 @@ function searchFunction(e) {
 						  output += '<div class="col-md-12 mx-auto"><center><img style="    width: max-100%;" src="https://drive.google.com/thumbnail?id='+val.imageid+'&sz=w200-h113" alt="'+ val.cardnumberfile +'" /></center></div>';
 						  }
 						  else{
-						  output += '<div class="col-md-12 mx-auto"><div style="width:200px;height:113px;">Image Unavailable</div></div>'
+						  output += '<div class="col-md-12 mx-auto"><div style="width:200px;height:113px;text-align:center">Image Unavailable</div></div>'
 						  }
 						  output += '<div class="col-md-12 mx-auto">';
 						  output += '<p style="padding-top:5px;font-weight:bold;">' + val.charactername + '</p>';
