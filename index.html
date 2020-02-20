@@ -48,15 +48,15 @@ function searchFunction(e) {
 						  output += '<div class="col-md-6 well">';
 						  
 						  if (val.indrive != 'No'){
-						  output += '<div class="col-md-3"><img src="https://drive.google.com/thumbnail?id='+val.imageid+'&sz=w200-h113" alt="'+ val.cardnumberfile +'" /></div>';
+						  output += '<div class="col-md-12"><img src="https://drive.google.com/thumbnail?id='+val.imageid+'&sz=w200-h113" alt="'+ val.cardnumberfile +'" /></div>';
 						  }
 						  else{
-						  output += '<div class="col-md-3">Image Unavailable</div>'
+						  output += '<div class="col-md-12">Image Unavailable</div>'
 						  }
-						  output += '<div class="col-md-7">';
+						  output += '<div class="col-md-12">';
 						  output += '<h5>' + val.charactername + '</h5>';
-						  output += '<p>Event/Gacha:' + val.cardgachaeventname + '</p>'
-						  output += '<p>Download URL:' + val.url + '</p>'
+						  output += '<p><strong>Event/Gacha:</strong> ' + val.cardgachaeventname + '</p>'
+						  output += '<p><a href="' + val.url + '">Download ' + val.cardnumberfile+'.png</a></p>'
 						  output += '</div>';
 						  output += '</div>';
 						  if(count%2 == 0){
