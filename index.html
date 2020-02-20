@@ -64,7 +64,12 @@ $( document ).ready(function() {
 						  output += '<div class="col-md-12 mx-auto">';
 						  output += '<p style="padding-top:5px;font-weight:bold;">' + val.charactername + '</p>';
 						  output += '<p><strong>Event/Gacha:</strong> ' + val.cardgachaeventname + '</p>'
+						  if (val.indrive != 'No'){
 						  output += '<p><strong><a href="' + val.url + '">Download ' + val.cardnumberfile+'.png</a></strong></p>'
+						  }
+						  else{
+						  output += '<p><strong>Unavailable</strong></p>'
+						  }
 						  output += '</div>';
 						  output += '</div>';
 						  if(count%2 == 0){
@@ -105,6 +110,7 @@ $( document ).ready(function() {
 	<div class="container" style="padding:50px; width:100%">
 	<div style="text-align:center;">
 	<p style="text-align:center;">Search tool to look for renders. It may lag a bit so please wait for it to load. A continuous work in progress.</p>
+		<p><strong>TO-DO: </strong> Sort by unit, add filters.</p>
 		<form id="ansta-search" role="form" style="
     max-width: 800px;
     margin: 0 auto;" onSubmit="return false;">
