@@ -22,7 +22,7 @@ $( document ).ready(function() {
 		  }
 		});*/
 
-		  $('#searchBtn').on('click', function(e){
+		  $('#searchBtn').click(function(event){
 		  
 		  $("#searchBtn").css("pointer-events", "none");
 
@@ -30,13 +30,13 @@ $( document ).ready(function() {
 		  var json = {};
 	
 			$.getJSON('https://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJTeOk&columns=false', function(data) {  	
-			 json = data;
-			  });
+			 json = data;		  
 		  
 		  
 		            var searchField = $(this).val();
 					if(searchField === '')  {
-						$('#filter-records').html('');
+						$('#filter-records').html('Please type in something.');
+						$("#searchBtn").css("pointer-events", "auto");
 						return;
 					}
 					
@@ -68,9 +68,9 @@ $( document ).ready(function() {
 					  });
 					  output += '</div>';
 					  $('#filter-records').html(output);
+					$("#searchBtn").css("pointer-events", "auto");
 		        });
-				
-				$("#searchBtn").css("pointer-events", "auto");
+				});
 				});
 			
 			
