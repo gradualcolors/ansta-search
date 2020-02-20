@@ -26,9 +26,9 @@ $.getJSON('https://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJT
 		            var output = '<div class="row">';
 		            var count = 1;
 					  $.each(data.rows, function(key, val){
-						if ((val.cardgachaeventname.search(regex) != -1) || (val.charactername.search(regex) != -1)) {
+						if ((val.charactername.search(regex) != -1) || (val.cardgachaeventname.search(regex) != -1)) {
 						  output += '<div class="col-md-6 well">';
-						  output += '<div class="col-md-3"><img class="img-responsive" src="'https://drive.google.com/thumbnail?id='+val.imageid+'&sz=w200-h113'" alt="'+ val.cardnumberfile +'" /></div>';
+						  output += '<div class="col-md-3"><img class="img-responsive" src="https://drive.google.com/thumbnail?id='+val.imageid+'&sz=w200-h113"' alt="'+ val.cardnumberfile +'" /></div>';
 						  output += '<div class="col-md-7">';
 						  output += '<h5>' + val.charactername + '</h5>';
 						  output += '<p>' + val.cardgachaeventname + '</p>'
