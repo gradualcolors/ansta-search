@@ -24,7 +24,7 @@ $( document ).ready(function() {
 
 		  $('#searchBtn').click(function(event){
 		  
-		  if( !$(this).hasClass('disabled') )
+		  if( $(this).hasClass('disabled') )
 				{
 				return;
 				}
@@ -43,7 +43,7 @@ $( document ).ready(function() {
 	
 			$.getJSON('https://cors-anywhere.herokuapp.com/http://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJTeOk&columns=false&q='+searchField, function(data) {  	
 			 json = data;		  
-		  
+		   
 		  
 		            
 					
@@ -81,10 +81,10 @@ $( document ).ready(function() {
 					  output += '</div>';
 					  $('#filter-records').html(output);
 					$("#searchBtn").prop('disabled',false).removeClass('disabled');
-		        });
+		       
 				});
 				});
-			
+				});
 			
 	</script>
 	
