@@ -24,19 +24,24 @@ $( document ).ready(function() {
 
 		  $('#searchBtn').click(function(event){
 		  
-		  $("#searchBtn").css("pointer-events", "none");
+		  if( !$(this).hasClass('disabled') )
+				{
+				return;
+				}
+		  
+		 $("#searchBtn").prop('disabled',true).addClass('disabled');
 
 		  var searchField = $('#txt-search').val();
 					if(searchField === '')  {
 						$('#filter-records').html('Please type in something.');
-						$("#searchBtn").css("pointer-events", "auto");
+						$("#searchBtn").prop('disabled',false).removeClass('disabled');
 						return;
 					}
 		  
 		  
 		  var json = {};
 	
-			$.getJSON('https://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJTeOk&columns=false&q='+searchField, function(data) {  	
+			$.getJSON('https://cors-anywhere.herokuapp.com/http://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJTeOk&columns=false&q='+searchField, function(data) {  	
 			 json = data;		  
 		  
 		  
@@ -66,11 +71,16 @@ $( document ).ready(function() {
 							output += '</div><div class="row aligned-row">'
 						  }
 						  count++;
+						  
+						 var getProgress = (count-1) / json.rows.length;
+						 var intProgress = Math.floor(getProgress);
+						 
+						 $('#progress').html("Progress: " + intProgress + "/" +json.rows.length);
 						}
 					  });
 					  output += '</div>';
 					  $('#filter-records').html(output);
-					$("#searchBtn").css("pointer-events", "auto");
+					$("#searchBtn").prop('disabled',false).removeClass('disabled');
 		        });
 				});
 				});
@@ -102,8 +112,9 @@ $( document ).ready(function() {
 			<div class="form-group">
 				<input type="input" class="form-control input-lg" id="txt-search" placeholder="Type your search character">
 			</div>
-		<a href="#" class="btn btn-block btn-primary btn-primary" id="searchBtn">Enter</a>
+		<button class="btn btn-block btn-primary btn-primary" id="searchBtn">Enter</button>
 		</form>
+		<div id="progress"></div>
 		<div id="filter-records" style="padding:50px"></div>
 	</div>
 	</div>
