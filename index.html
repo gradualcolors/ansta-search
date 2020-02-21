@@ -54,38 +54,31 @@ $( document ).ready(function() {
 		            var count = 1;
 					  $.each(json.rows, function(key, val){
 						  
-						var check;
+var check;
 var unit_check = val.unit.search(regex);
 var char_check = val.charactername.search(regex);
 var gacha_check = val.cardgachaeventname.search(regex);
 
-         switch ($('input[type=checkbox]').attr('id')) {
-             case 'fs_unit':
+
 				check = $('#fs_unit').is(':checked');				
                			if (check == true) 
 				unit_check = val.unit.search(regex);
 				else
 				unit_check = -1;
-				break;
 				
-             case 'fs_char':
-                check = $('#fs_char').is(':checked');				
-                if (check == true) 
+                		check = $('#fs_char').is(':checked');				
+                		if (check == true) 
 				char_check = val.charactername.search(regex);
 				else
 				char_check = -1;
-				break;
 				
-             case 'fs_gacha':
-                 check = $('#fs_gacha').is(':checked');
+                 		check = $('#fs_gacha').is(':checked');
 				 if (check == true) 
 				 gacha_check = val.cardgachaeventname.search(regex);
 				 else
 				 gacha_check = -1;
-                 		break;
+   
 				 
-             default:
-                 break;
 
          }  
 						  
