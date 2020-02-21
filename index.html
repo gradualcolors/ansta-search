@@ -14,14 +14,6 @@
 $( document ).ready(function() {
 		
 
-	/*	$('#ansta-search').on('keyup keypress input', function(e) {
-		  var keyCode = e.keyCode || e.which;
-		  if (keyCode === 13) { 
-			e.preventDefault();
-			return false;
-		  }
-		});*/
-
 		  $('#searchBtn').click(function(event){
 		  
 		  if( $(this).hasClass('disabled') )
@@ -111,6 +103,10 @@ var gacha_check = val.cardgachaeventname.search(regex);
 						 //var getProgress = count-1;
 
 						}
+						else{
+							$('#filter-records').html('Please select some filter buttons.');
+						}
+						
 					  });
 					  output += '</div>';
 						 //$('#progress').html("Loaded: " +json.rows.length + " entries");
