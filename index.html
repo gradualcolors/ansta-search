@@ -33,6 +33,10 @@ $( document ).ready(function() {
 		  
 		  
 		  var json = {};
+	          var unit_check = -1;
+		  var char_check = -1;
+		  var gacha_check = -1;
+		  
 	
 			$.getJSON('https://cors-anywhere.herokuapp.com/http://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJTeOk&columns=false&q='+searchField, function(data) {  	
 			 json = data;		  
@@ -46,10 +50,10 @@ $( document ).ready(function() {
 		            var count = 1;
 					  $.each(json.rows, function(key, val){
 						  
-var check;
-var unit_check = val.unit.search(regex);
-var char_check = val.charactername.search(regex);
-var gacha_check = val.cardgachaeventname.search(regex);
+				var check;
+				unit_check = val.unit.search(regex);
+				char_check = val.charactername.search(regex);
+				gacha_check = val.cardgachaeventname.search(regex);
 
 
 				check = $('#fs_unit').is(':checked');				
