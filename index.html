@@ -30,6 +30,13 @@ $( document ).ready(function() {
 						return;
 					}
 			  
+		if (($('#fs_unit').is(":checked") == false ) && 
+		    ($('#fs_char').is(":checked") == false ) && 
+		    ($('#fs_gacha').is(":checked") == false )){
+				    $('#filter-records').html('<div style="margin:0 auto">Please select some filter buttons.</div>');
+				    $("#searchBtn").prop('disabled',false).removeClass('disabled');
+				    return;
+				    }	  
 		  
 		  
 		  var json = {};
@@ -107,9 +114,7 @@ $( document ).ready(function() {
 					  }
 					  });
 				
-					if ((unit_check == -1) && (char_check == -1) && (gacha_check == -1)){
-				    output += '<div style="margin:0 auto">Please select some filter buttons.</div>';
-				    }
+					
 				
 					  output += '</div>';
 						 //$('#progress').html("Loaded: " +json.rows.length + " entries");
