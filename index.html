@@ -133,6 +133,7 @@ var gacha_check = -1;
 	<style>
 		
 <!-- FILTER BUTTONS -->
+.flipbutton {width: 100px;}
 .flipswitch {
   position: relative;
   width: 86px;
@@ -326,7 +327,7 @@ var gacha_check = -1;
 			</div>
 			
 			<div id="buttons" style="margin: 0 auto;">
-				
+		<div class="flipbutton">		
 				<div class="flipswitch">
     <input type="checkbox" name="flipswitch" class="flipswitch-cb" id="fs_unit" checked>
     <label class="flipswitch-label" for="fs">
@@ -334,8 +335,9 @@ var gacha_check = -1;
         <div class="flipswitch-switch"></div>
     </label>
 </div>
+</div>
 				
-<div class="flipswitch">
+<!--<div class="flipswitch">
     <input type="checkbox" name="flipswitch" class="flipswitch-cb" id="fs_char" checked>
     <label class="flipswitch-label" for="fs">
         <div class="flipswitch-inner-char"></div>
@@ -349,7 +351,7 @@ var gacha_check = -1;
         <div class="flipswitch-inner-gacha"></div>
         <div class="flipswitch-switch"></div>
     </label>
-</div>
+</div>-->
 			
 			</div>
 		<a href="#" class="btn btn-block btn-primary btn-primary" id="searchBtn">Enter</a>
