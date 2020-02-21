@@ -71,8 +71,6 @@ var gacha_check = val.cardgachaeventname.search(regex);
 				 gacha_check = -1;
    
 						  
-						  
-						  
 						//if ((val.charactername.search(regex) != -1) || (val.cardgachaeventname.search(regex) != -1 || (val.unit.search(regex) != -1)) 
 						if ((unit_check != -1) || (char_check != -1) || (gacha_check != -1)) {
 
@@ -103,12 +101,14 @@ var gacha_check = val.cardgachaeventname.search(regex);
 						 //var getProgress = count-1;
 
 						}
-						else{
-							output += 'Please select some filter buttons. </div>';
-							return;
-						}
 						
+					  }
 					  });
+				
+					if ((unit_check == -1) && (char_check == -1) && (gacha_check == -1){
+				    output += 'Please select some filter buttons.';
+				    }
+				
 					  output += '</div>';
 						 //$('#progress').html("Loaded: " +json.rows.length + " entries");
 						   $('#progress').html("<strong>Loaded:</strong> " +(count-1)+ " entries");
