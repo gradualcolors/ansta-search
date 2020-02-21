@@ -109,12 +109,12 @@ var gacha_check = val.cardgachaeventname.search(regex);
 						  count++;
 						  
 						 //var getProgress = count-1;
-						 
-						 //$('#progress').html("Loaded: " +json.rows.length + " entries");
-						   $('#progress').html("Loaded: " +count+ " entries");
+
 						}
 					  });
 					  output += '</div>';
+						 //$('#progress').html("Loaded: " +json.rows.length + " entries");
+						   $('#progress').html("Loaded: " +(count-1)+ " entries");
 					  $('#filter-records').html(output);
 					$("#searchBtn").prop('disabled',false).removeClass('disabled');
 		       
