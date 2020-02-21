@@ -110,7 +110,7 @@ var gacha_check = val.cardgachaeventname.search(regex);
 					  });
 					  output += '</div>';
 						 //$('#progress').html("Loaded: " +json.rows.length + " entries");
-						   $('#progress').html("Loaded: " +(count-1)+ " entries");
+						   $('#progress').html("<strong>Loaded:</strong> " +(count-1)+ " entries");
 					  $('#filter-records').html(output);
 					$("#searchBtn").prop('disabled',false).removeClass('disabled');
 		       
@@ -231,7 +231,7 @@ input:checked + .slider:before {
 			
 		<a href="#" class="btn btn-block btn-primary btn-primary" id="searchBtn">Search</a>
 		</form>
-		<div id="progress"></div>
+		<div id="progress" style="padding-top:5px;"></div>
 		<div id="filter-records" style="padding:50px;margin: 0 auto;"></div>
 	</div>
 	</div>
