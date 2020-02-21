@@ -38,10 +38,26 @@ $( document ).ready(function() {
 						return;
 					}
 			  
-var check;
-var unit_check = -1;
-var char_check = -1;
-var gacha_check = -1;
+		  
+		  
+		  var json = {};
+	
+			$.getJSON('https://cors-anywhere.herokuapp.com/http://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJTeOk&columns=false&q='+searchField, function(data) {  	
+			 json = data;		  
+		   
+		  
+		            
+					
+		            var regex = new RegExp(searchField, "i");					
+					
+		            var output = '<div class="row aligned-row">';
+		            var count = 1;
+					  $.each(json.rows, function(key, val){
+						  
+						var check;
+var unit_check = val.unit.search(regex);
+var char_check = val.charactername.search(regex);
+var gacha_check = val.cardgachaeventname.search(regex);
 
          switch ($('input[type=checkbox]').attr('id')) {
              case 'fs_unit':
@@ -71,22 +87,10 @@ var gacha_check = -1;
              default:
                  break;
 
-         }
-		  
-		  
-		  var json = {};
-	
-			$.getJSON('https://cors-anywhere.herokuapp.com/http://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJTeOk&columns=false&q='+searchField, function(data) {  	
-			 json = data;		  
-		   
-		  
-		            
-					
-		            var regex = new RegExp(searchField, "i");					
-					
-		            var output = '<div class="row aligned-row">';
-		            var count = 1;
-					  $.each(json.rows, function(key, val){
+         }  
+						  
+						  
+						  
 						//if ((val.charactername.search(regex) != -1) || (val.cardgachaeventname.search(regex) != -1 || (val.unit.search(regex) != -1)) 
 						if ((unit_check != -1) || (char_check != -1) || (gacha_check != -1)) {
 
