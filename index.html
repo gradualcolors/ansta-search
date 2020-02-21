@@ -24,8 +24,8 @@ $( document ).ready(function() {
 		 $("#searchBtn").prop('disabled',true).addClass('disabled');
 
 		  var searchField = $('#txt-search').val();
-					if(searchField.trim() === '')  {
-						$('#filter-records').html('Please type in something.');
+					if(searchField.trim() === '' || searchField.length < 3 )  {
+						$('#filter-records').html('Please type in at least 3 letters.');
 						$("#searchBtn").prop('disabled',false).removeClass('disabled');
 						return;
 					}
@@ -104,7 +104,8 @@ var gacha_check = val.cardgachaeventname.search(regex);
 
 						}
 						else{
-							output += 'Please select some filter buttons.</div>';
+							output += 'Please select some filter buttons. </div>';
+							return;
 						}
 						
 					  });
