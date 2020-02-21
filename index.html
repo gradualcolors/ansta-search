@@ -131,7 +131,10 @@ var gacha_check = -1;
 	
 	<style>
 .checker{
-		display:inline;}
+    width: 100px;
+    display: inline-block;
+font-size:10px;
+font-weight:bold;}
 .switch {
   position: relative;
   display: inline-block;
@@ -222,18 +225,19 @@ input:checked + .slider:before {
 			<div id="buttons" style="margin: 0 auto;"><center>
 <div class="checker"><label class="switch">
   <input type="checkbox" id="fs_unit">
-	<span class="slider round"></span></label>Unit</div>
+	<span class="slider round"></span></label><div class="check_label">Unit</div></div>
 				
 <div class="checker"><label class="switch">
   <input type="checkbox" id="fs_char">
-  <span class="slider round"></span>Character</div>
-</label>
+  <span class="slider round"></span></label><div class="check_label">Character</div></div>
+
 
 <div class="checker"><label class="switch">
   <input type="checkbox" id="fs_gacha">
   <span class="slider round"></span>
-	</label>Gacha/Event</div></center>
+	</label><div class="check_label">Event/Gacha</div></div></center>
 			</div>
+			
 		<a href="#" class="btn btn-block btn-primary btn-primary" id="searchBtn">Enter</a>
 		</form>
 		<div id="progress"></div>
