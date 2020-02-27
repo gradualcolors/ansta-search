@@ -1,0 +1,49 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+var json = {};
+var result = [];
+var lastEntry = "";
+
+function getArray(){
+$.getJSON('https://cors-anywhere.herokuapp.com/http://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJTeOk&columns=false', function(data) {  	
+			 json = data;
+			 
+		$.each(json.rows, function(key, value) {	 
+		result.push(value);	
+		});
+		console.log("finished");	
+		whenDone();
+ });
+ }
+	
+function whenDone() {
+
+result.sort(comp);
+lastEntry = result["0"].cardnumberfile;
+$('#test').html(lastEntry);	
+console.log("finished 1");	
+console.log(lastEntry);	
+}
+
+function comp(a, b) {
+    return new Date(b.dateadded).getTime() - new Date(a.dateadded).getTime();
+}
+
+$( document ).ready(function() {
+		
+		 
+getArray();
+
+	
+				});
+				
+
+	
+		 
+
+
+				
+	</script>
+	
+<div id="test"></div>
