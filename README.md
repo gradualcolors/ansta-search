@@ -2,7 +2,7 @@
 
 ### Ensemble Stars Renders Search Tool
 
-Data is pulled from local json files.
+Data is pulled from local json files based on the Card Render Logs.
 
 Notes: Card spelling is based on the card names (ie. Yuuta is spelled as Yuta).
 
@@ -13,3 +13,6 @@ Notes: Card spelling is based on the card names (ie. Yuuta is spelled as Yuta).
 > - Added !! cards and CN Exclusive.
 > - Filters now include subunits like shuffle, etc. 
 > - Unbloomed and bloomed images are now condensed and fade in and out.
+
+#### Known Bugs
+> - Thumbnail images may break (fixable with a refresh)

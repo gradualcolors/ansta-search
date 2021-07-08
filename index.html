@@ -281,10 +281,11 @@ $( document ).ready(function() {
 	
 	<style>
 .checker{
-    width: 100px;
-    display: inline-block;
-font-size:12px;
+/*    width: 100px;
+    display: inline-block;*/
+font-size:14px;
 font-weight:bold;}
+
 .switch {
   position: relative;
   display: inline-block;
@@ -292,58 +293,59 @@ font-weight:bold;}
   height: 34px;
 }
 
-.switch input { 
+/* Hide the browser's default radio button */
+.switch input {
+  position: absolute;
   opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  height: 0;
+  width: 0;
 }
 
-.slider:before {
+
+/* Create a custom radio button */
+.radiobtn{
   position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  top: -5;
+  left: -35px;
+  height: 30px;
+  width: 30px;
+  background-color: #d0d0d0;
+  border-radius: 50%;
 }
 
-input:checked + .slider {
+/* On mouse-over, add a grey background color */
+.switch:hover input ~ .radiobtn{
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.switch input:checked ~ .radiobtn{
   background-color: #337ab7;
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #337ab7;
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radiobtn:after {
+  content: "";
+  position: absolute;
+  display: none;
 }
 
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+/* Show the indicator (dot/circle) when checked */
+.switch input:checked ~ .radiobtn:after {
+  display: block;
 }
 
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
+/* Style the indicator (dot/circle) */
+.switch .radiobtn:after {
+  top: 9px;
+  left: 9px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-}		
+  background: white;
+}
+	
 		
 .aligned-row {
     
@@ -412,17 +414,38 @@ opacity:0;
 .cd  img:nth-of-type(2) {
   animation-delay: 0s;
 }
-
+.change_container
+{
+max-width:800px;
+margin: 0 auto;
+}
 	</style>
 </head>
 
 <body>
-	<div class="container" style="padding:50px; width:100%">
+	<div class=.checker" style="padding:50px; width:100%">
 	<center><img style="width:100%;max-width:400px;padding-bottom:25px;" src="assets/Enstars_logo.png" alt="Ensemble Stars Renders Search Tool" onclick="changeVersion(this);" /></center>
 	<div style="text-align:center;">
-		<p style="text-align:center;">Search tool to look for renders for easier usage. Click the image logo to change modes between ! and !! Enstars.</p>
+		<p style="text-align:center;">Search tool to look for renders for easier usage. Image thumbnail loading may lag a little.<br/> <strong>Click the image logo above to change modes between ! and !! Enstars.</strong></p>
 		<p>Created by twitter user <a href="https://twitter.com/gradualcolors" target="_blank">@gradualcolors</a>. Send a DM if there's any bugs or errors. Documentation <a href="https://github.com/gradualcolors/ansta-search/" target="_blank">here</a>.</p>
-		<p style="text-align:center;"><code>UPDATE 7/7/2021: Rehauled search engine, fixed downtime problems, added !! cards and CN Exclusive.</code><br/><code> Filters now include subunits like shuffle, etc. Unbloomed and bloomed images are now condensed and fade in and out.</code></p>
+<div class="change_container">
+	
+<div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse1">Change Log</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse">
+        <div class="panel-body">UPDATE 7/7/2021:</div>
+        <div class="panel-footer"><code>Rehauled search engine, fixed downtime problems, added !! cards and CN Exclusive.</code><br/>
+		<code> Filters now include subunits like shuffle, etc.</code><br/>
+		<code>Unbloomed and bloomed images are now condensed and fade in and out.</code></div>
+      </div>
+    </div>
+  </div>
+</div>		
 		<form id="ansta-search" role="form" style="
     max-width: 800px;
     margin: 0 auto;" onSubmit="return false;">
@@ -430,20 +453,22 @@ opacity:0;
 				<input type="input" class="form-control input-lg" id="txt-search" placeholder="Type in unit, subunit, character, gacha, or event">
 			</div>
 			
-<div id="buttons" style="margin: 0 auto;padding-bottom:5px;"><center>
-<div class="checker"><label class="switch">
-  <input name = "filter_options" class="filter radio"  type="radio" id="fs_unit">
-	<span class="slider round"></span></label><div class="check_label">Unit/Subunit</div></div>
+<div id="buttons" style="margin: 0 auto;padding-bottom:5px;" class="row"><center>
+<div class="checker col-md-4"><label class="switch"><div class="check_label">Unit/Subunit</div>
+  <input name = "filter_options" type="radio" id="fs_unit">
+  <span class="filter radiobtn"></span>
+	</label></div>
 				
-<div class="checker"><label class="switch">
-  <input name = "filter_options" class="filter radio"  type="radio" id="fs_char">
-  <span class="slider round"></span></label><div class="check_label">Character</div></div>
+<div class="checker col-md-4"><label class="switch"><div class="check_label">Character</div>
+  <input name = "filter_options"  type="radio" id="fs_char">
+  <span class="filter radiobtn"></span>
+  </label></div>
 
 
-<div class="checker"><label class="switch">
-  <input name = "filter_options" class="filter radio" type="radio" id="fs_gacha">
-  <span class="slider round"></span>
-	</label><div class="check_label">Event/Gacha</div></div></center>
+<div class="checker col-md-4"><label class="switch"><div class="check_label">Event/Gacha</div>
+  <input name = "filter_options" type="radio" id="fs_gacha">
+  <span class="filter radiobtn"></span>
+	</label></div></center>
 			</div>
 			
 		<a href="#" class="btn btn-block btn-primary btn-primary" id="searchBtn">Search</a>
