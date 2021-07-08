@@ -183,13 +183,13 @@ $( document ).ready(function() {
 						  if (val.indrive != 'No'){
 						  //output += '<div class="col-md-12 mx-auto"><center><img style="max-width:100%;" src="https://drive.google.com/thumbnail?id='+val.imageid+'&sz=w200-h113" alt="'+ val.cardnumberfile +'" /></center></div>';
 						  
-						  output += '<div class="col-md-12 mx-auto cd"><center>';
+						  output += '<div class="col-md-12 mx-auto"><center><div class="cd">';
 						  output += '<img class="top" style="max-width:100%;" src="https://drive.google.com/thumbnail?id='+val.imageid+'&sz=w400-h200" alt="'+ val.cardnumberfile +'" />';
 						  output += '<img class="bottom" style="max-width:100%;" src="https://drive.google.com/thumbnail?id='+evolveItem.imageid+'&sz=w400-h200" alt="'+ evolveItem.cardnumberfile +'" />';
-						  output += '</center></div>';
+						  output += '</div></center></div>';
 						  }
 						  else{
-						  output += '<div class="col-md-12 mx-auto"><center><div style="padding-top:150px;width:354px;height:200px;">Image Unavailable</div></center></div>';
+						  output += '<div class="col-md-12 mx-auto"><center><div style="padding-top:150px;width:354px;height:175px;">Image Unavailable</div></center></div>';
 						  }
 						  output += '<div style="margin:0 auto;max-width:300px;">';
 						  output += '<p style="padding-top:5px;font-weight:bold;">' + val.charactername + '</p>';
@@ -218,7 +218,7 @@ $( document ).ready(function() {
 						  output += '<p><strong>Version:</strong> ' + val.version + '</p>';
 						  }
 						  else{
-						  output += '<p style="height:105px;"><strong>Unavailable</strong></p>';
+						  output += '<p style="height:80px;"><strong>Unavailable</strong></p>';
 						  }
 							
 						  output += '</div>';
@@ -356,12 +356,14 @@ input:checked + .slider:before {
 
 .cd {
 position: relative;
-height:225px;
+height:200px;
+width:100%;
+max-width:354px;
 }
 
 .cd img {
 position: absolute;
-left:10;
+left:0;
     -webkit-animation-name: cf4FadeInOut;
     -webkit-animation-timing-function: ease-in-out;
     -webkit-animation-iteration-count: infinite;
