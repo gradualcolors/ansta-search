@@ -189,18 +189,36 @@ $( document ).ready(function() {
 						  output += '</center></div>';
 						  }
 						  else{
-						  output += '<div class="col-md-12 mx-auto"><center><div style="width:354px;height:200px;">Image Unavailable</div></center></div>';
+						  output += '<div class="col-md-12 mx-auto"><center><div style="padding-top:150px;width:354px;height:200px;">Image Unavailable</div></center></div>';
 						  }
-						  output += '<div style="margin:0 auto;max-width:275px;">';
+						  output += '<div style="margin:0 auto;max-width:300px;">';
 						  output += '<p style="padding-top:5px;font-weight:bold;">' + val.charactername + '</p>';
-						  output += '<p><strong>Event/Gacha:</strong> ' + val.cardgachaeventname + '</p>'
+						  
+
+						  
+						  output += '<p><strong>Event/Gacha:</strong> '; 
+						  
+						  if(val.cardgachaeventname.length > 60)
+						  {
+						  output += '<span style="font-size:12px">';
+						  }
+						  else{
+						  output +='<span>';
+						  }
+						  
+						  output +=  val.cardgachaeventname + '</span></p>';
+						  
+						  if(val.cardgachaeventname.length < 35)
+						  {
+						  output += '<br/>';
+						  }
 						  if (val.indrive != 'No'){
 						  output += '<p><strong><a target="_blank" href="' + val.url + '">Download ' + val.cardnumberfile+'.png</a></strong></p>';
 						  output += '<p><strong><a target="_blank" href="' + evolveItem.url + '">Download ' + evolveItem.cardnumberfile+'.png</a></strong></p>';
 						  output += '<p><strong>Version:</strong> ' + val.version + '</p>';
 						  }
 						  else{
-						  output += '<p><strong>Unavailable</strong></p>';
+						  output += '<p style="height:105px;"><strong>Unavailable</strong></p>';
 						  }
 							
 						  output += '</div>';
@@ -262,9 +280,6 @@ $( document ).ready(function() {
 	</script>
 	
 	<style>
-.well{
-min-height:450px;
-}
 .checker{
     width: 100px;
     display: inline-block;
@@ -403,8 +418,8 @@ opacity:0;
 	<center><img style="width:100%;max-width:400px;padding-bottom:25px;" src="assets/Enstars_logo.png" alt="Ensemble Stars Renders Search Tool" onclick="changeVersion(this);" /></center>
 	<div style="text-align:center;">
 		<p style="text-align:center;">Search tool to look for renders for easier usage. Click the image logo to change modes between ! and !! Enstars.</p>
-		<p>Created by twitter user <a href="https://twitter.com/gradualcolors" target="_blank">@gradualcolors</a>. Documentation <a href="https://github.com/gradualcolors/ansta-search/" target="_blank">here</a>.</p>
-		<p style="text-align:center;"><code>UPDATE 7/7/2021: Rehauled search engine, fixed downtime problems, added !! cards and CN Exclusive.</code><br/><code> Filters now include subunits like shuffle, etc. Unbloomed and bloomed images fade in and out.</code></p>
+		<p>Created by twitter user <a href="https://twitter.com/gradualcolors" target="_blank">@gradualcolors</a>. Send a DM if there's any bugs or errors. Documentation <a href="https://github.com/gradualcolors/ansta-search/" target="_blank">here</a>.</p>
+		<p style="text-align:center;"><code>UPDATE 7/7/2021: Rehauled search engine, fixed downtime problems, added !! cards and CN Exclusive.</code><br/><code> Filters now include subunits like shuffle, etc. Unbloomed and bloomed images are now condensed and fade in and out.</code></p>
 		<form id="ansta-search" role="form" style="
     max-width: 800px;
     margin: 0 auto;" onSubmit="return false;">

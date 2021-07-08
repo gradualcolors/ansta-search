@@ -12,4 +12,4 @@ Notes: Card spelling is based on the card names (ie. Yuuta is spelled as Yuta).
 > - Rehauled search engine and fixed downtime problems
 > - Added !! cards and CN Exclusive.
 > - Filters now include subunits like shuffle, etc. 
-> - Unbloomed and bloomed images fade in and out.
+> - Unbloomed and bloomed images are now condensed and fade in and out.
