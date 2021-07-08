@@ -52501,7 +52501,7 @@
             "version":"JP"
         },
         {
-            "cardnumberfile":"cf_201_normal",
+            "cardnumberfile":"cf_201_normal_cn",
             "cardgachaeventname":"Bromide (CN Version)",
             "charactername":"Subaru Akehoshi",
             "raritystars":3,
@@ -52515,7 +52515,7 @@
             "version":"CN"
         },
         {
-            "cardnumberfile":"cf_201_evolution",
+            "cardnumberfile":"cf_201_evolution_cn",
             "cardgachaeventname":"Bromide (CN Version)",
             "charactername":"Subaru Akehoshi",
             "raritystars":3,
