@@ -9,7 +9,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 
-	
+var version = "ENS1";	
 	
 $( document ).ready(function() {
 		
@@ -33,19 +33,22 @@ $( document ).ready(function() {
 		if (($('#fs_unit').is(":checked") == false ) && 
 		    ($('#fs_char').is(":checked") == false ) && 
 		    ($('#fs_gacha').is(":checked") == false )){
-				    $('#filter-records').html('<div style="margin:0 auto">Please select some filter buttons.</div>');
+				    $('#filter-records').html('<div style="margin:0 auto">Please select a filter button.</div>');
 				    $("#searchBtn").prop('disabled',false).removeClass('disabled');
 				    return;
 				    }	  
 		  
 		  
-		  var json = {};
+		  
+
+		  
+		  //var json = {};
 	          var unit_check = -1;
 		  var char_check = -1;
 		  var gacha_check = -1;
 		  
 	
-			$.getJSON('https://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJTeOk&columns=false&q='+searchField, function(data) {  	
+		/*	$.getJSON('https://gsx2json.com/api?id=1jxE1OK_Uf_BMXcQYrzSIMmt5gAKqEiIbN6cfGHJTeOk&columns=false&q='+searchField, function(data) {  	
 			 json = data;		  
 		   
 		  
@@ -98,10 +101,12 @@ $( document ).ready(function() {
 						  output += '<p><strong>Event/Gacha:</strong> ' + val.cardgachaeventname + '</p>'
 						  if (val.indrive != 'No'){
 						  output += '<p><strong><a target="_blank" href="' + val.url + '">Download ' + val.cardnumberfile+'.png</a></strong></p>'
+						  output += '<p><strong>Version:</strong> ' + val.version + '</p>'
 						  }
 						  else{
 						  output += '<p><strong>Unavailable</strong></p>'
 						  }
+							
 						  output += '</div>';
 						  output += '</div>';
 						  if(count%2 == 0){
@@ -124,11 +129,142 @@ $( document ).ready(function() {
 		       
 				});
 				});
+				});*/
+		var jsonURL;
+		if(version == 'ENS1')
+		{	jsonURL = '/Enstars1RenderData.json';	}		
+		else
+		{
+		jsonURL = '/Enstars2RenderData.json';	
+		}
+			
+		$.getJSON(jsonURL, function(data) {  	
+			 //json = data.rows;	
+		var filtered;
+		
+		
+		var searchKey = searchField.toLowerCase();
+		
+		
+		 switch(true)
+		  {
+			case $('#fs_unit').is(":checked"):
+			filtered = data.rows.filter(a => a.unit.toLowerCase().indexOf(searchKey)  > -1 || a.subunit.toLowerCase().indexOf(searchKey)  > -1);
+				break;
+			case $('#fs_char').is(":checked"):
+				filtered = data.rows.filter(a => a.charactername.toLowerCase().indexOf(searchKey)  > -1 );
+				break;
+			case $('#fs_gacha').is(":checked"):
+				filtered = data.rows.filter(a => a.cardgachaeventname.toLowerCase().indexOf(searchKey) > -1 );
+				break;
+		  }
+		var json = filtered;
+		var jsonNormal = filtered.filter(a => a.cardnumberfile.indexOf("normal") > -1 );
+		var jsonEvolution = filtered.filter(a => a.cardnumberfile.indexOf("evolution") > -1 );	
+		  
+		           				
+					
+		            var output = '<div class="row aligned-row">';
+		            var count = 1;
+					  //$.each(json.rows, function(key, val){
+						  $.each(jsonNormal, function(key, val){
+						  
+						//if ((val.charactername.search(regex) != -1) || (val.cardgachaeventname.search(regex) != -1 || (val.unit.search(regex) != -1)) 
+						//if ((unit_check != -1) || (char_check != -1) || (gacha_check != -1)) 
+						
+						var evoName = val.cardnumberfile.replace("normal", "evolution");
+						
+						var evolveItem = jsonEvolution.find(item => {
+								return item.cardnumberfile == evoName});
+						
+
+						  output += '<div class="col-md-6 well mx-auto">';
+						  
+						  if (val.indrive != 'No'){
+						  //output += '<div class="col-md-12 mx-auto"><center><img style="max-width:100%;" src="https://drive.google.com/thumbnail?id='+val.imageid+'&sz=w200-h113" alt="'+ val.cardnumberfile +'" /></center></div>';
+						  
+						  output += '<div class="col-md-12 mx-auto cd"><center>';
+						  output += '<img class="top" style="max-width:100%;" src="https://drive.google.com/thumbnail?id='+val.imageid+'&sz=w400-h200" alt="'+ val.cardnumberfile +'" />';
+						  output += '<img class="bottom" style="max-width:100%;" src="https://drive.google.com/thumbnail?id='+evolveItem.imageid+'&sz=w400-h200" alt="'+ evolveItem.cardnumberfile +'" />';
+						  output += '</center></div>';
+						  }
+						  else{
+						  output += '<div class="col-md-12 mx-auto"><center><div style="width:354px;height:200px;">Image Unavailable</div></center></div>';
+						  }
+						  output += '<div style="margin:0 auto;max-width:275px;">';
+						  output += '<p style="padding-top:5px;font-weight:bold;">' + val.charactername + '</p>';
+						  output += '<p><strong>Event/Gacha:</strong> ' + val.cardgachaeventname + '</p>'
+						  if (val.indrive != 'No'){
+						  output += '<p><strong><a target="_blank" href="' + val.url + '">Download ' + val.cardnumberfile+'.png</a></strong></p>';
+						  output += '<p><strong><a target="_blank" href="' + evolveItem.url + '">Download ' + evolveItem.cardnumberfile+'.png</a></strong></p>';
+						  output += '<p><strong>Version:</strong> ' + val.version + '</p>';
+						  }
+						  else{
+						  output += '<p><strong>Unavailable</strong></p>';
+						  }
+							
+						  output += '</div>';
+						  output += '</div>';
+						  if(count%2 == 0){
+							output += '</div><div class="row aligned-row">'
+						  }
+						  count++;
+						  
+						 //var getProgress = count-1;
+						
+					//  }
+					  });
+				
+					
+				
+					  output += '</div>';
+						 //$('#progress').html("Loaded: " +json.rows.length + " entries");
+						   $('#progress').html("<strong>Loaded:</strong> " +(count-1)+ " entries");
+					  $('#filter-records').html(output);
+					$("#searchBtn").prop('disabled',false).removeClass('disabled');
+		       
+				});
+				});
 				});
 			
+		/*	function toggleCheck(e)
+			{
+				 if($('#fs_unit').is(":checked") == true){
+					$('#fs_char').prop("checked", false);
+					$('#fs_gacha').prop("checked", false);
+					}
+
+				if($('#fs_char').is(":checked") == true){
+				$('#fs_unit').prop("checked", false);
+				$('#fs_gacha').prop("checked", false);
+				}
+				if($('#fs_gacha').is(":checked") == true)
+				{
+					$('#fs_char').prop("checked", false);
+					$('#fs_unit').prop("checked", false);
+			  }
+		  }*/
+		  
+		  function changeVersion(e)
+			{
+				 if(version == "ENS1")
+				 {
+					e.src = "assets/Enstars2_logo.png";
+					version = "ENS2";
+				 }
+				 else
+				 {
+					e.src = "assets/Enstars_logo.png";
+					version = "ENS1";
+				 }
+			 }
+		  
 	</script>
 	
 	<style>
+.well{
+min-height:450px;
+}
 .checker{
     width: 100px;
     display: inline-block;
@@ -203,36 +339,91 @@ input:checked + .slider:before {
     }
 }
 
+.cd {
+position: relative;
+height:225px;
+}
+
+.cd img {
+position: absolute;
+left:10;
+    -webkit-animation-name: cf4FadeInOut;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 8s;
+    -moz-animation-name: cf4FadeInOut;
+    -moz-animation-timing-function: ease-in-out;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-duration: 8s;
+    -o-animation-name: cf4FadeInOut;
+    -o-animation-timing-function: ease-in-out;
+    -o-animation-iteration-count: infinite;
+    -o-animation-duration: 8s;
+    animation-name: cf4FadeInOut;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 6s;
+}
+
+.cd img.top{
+opacity:0;
+}
+
+
+@keyframes cf4FadeInOut {
+  0% {
+    opacity:1;
+  }
+  17% {
+    opacity:1;
+  }
+  25% {
+    opacity:0;
+  }
+  92% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+.cd  img:nth-of-type(1) {
+  animation-delay: 4s;
+}
+.cd  img:nth-of-type(2) {
+  animation-delay: 0s;
+}
 
 	</style>
 </head>
 
 <body>
 	<div class="container" style="padding:50px; width:100%">
-	<center><img style="width:100%;max-width:400px;padding-bottom:10px;" src="assets/Enstars_logo.png" alt="Ensemble Stars Renders Search Tool" /></center>
+	<center><img style="width:100%;max-width:400px;padding-bottom:25px;" src="assets/Enstars_logo.png" alt="Ensemble Stars Renders Search Tool" onclick="changeVersion(this);" /></center>
 	<div style="text-align:center;">
-		<p style="text-align:center;">Search tool to look for renders based on the <a href="https://docs.google.com/spreadsheets/d/1mfQ9HpVo7NM6Tm0yRkrUjOlk9CsCnh5W6fcuqJHKwv8/edit#gid=1473834242" target="_blank">Card Renders Log</a>. It may lag a bit so please wait for it to load. A continuous work in progress.</p>
-		<p>Created by twitter user <a href="https://twitter.com/sakasakitty" target="_blank">@sakasakitty</a>. Documentation <a href="https://github.com/gradualcolors/ansta-search/" target="_blank">here</a>.</p>
-		<p><strong>TO-DO: </strong> Add last added entry, link bundle packs, add CN exclusives</p>
+		<p style="text-align:center;">Search tool to look for renders for easier usage. Click the image logo to change modes between ! and !! Enstars.</p>
+		<p>Created by twitter user <a href="https://twitter.com/gradualcolors" target="_blank">@gradualcolors</a>. Documentation <a href="https://github.com/gradualcolors/ansta-search/" target="_blank">here</a>.</p>
+		<p style="text-align:center;"><code>UPDATE 7/7/2021: Rehauled search engine, fixed downtime problems, added !! cards and CN Exclusive.</code><br/><code> Filters now include subunits like shuffle, etc. Unbloomed and bloomed images fade in and out.</code></p>
 		<form id="ansta-search" role="form" style="
     max-width: 800px;
     margin: 0 auto;" onSubmit="return false;">
 			<div class="form-group">
-				<input type="input" class="form-control input-lg" id="txt-search" placeholder="Type in unit, char, gacha, or event">
+				<input type="input" class="form-control input-lg" id="txt-search" placeholder="Type in unit, subunit, character, gacha, or event">
 			</div>
 			
-			<div id="buttons" style="margin: 0 auto;padding-bottom:5px;"><center>
+<div id="buttons" style="margin: 0 auto;padding-bottom:5px;"><center>
 <div class="checker"><label class="switch">
-  <input type="checkbox" id="fs_unit">
-	<span class="slider round"></span></label><div class="check_label">Unit</div></div>
+  <input name = "filter_options" class="filter radio"  type="radio" id="fs_unit">
+	<span class="slider round"></span></label><div class="check_label">Unit/Subunit</div></div>
 				
 <div class="checker"><label class="switch">
-  <input type="checkbox" id="fs_char">
+  <input name = "filter_options" class="filter radio"  type="radio" id="fs_char">
   <span class="slider round"></span></label><div class="check_label">Character</div></div>
 
 
 <div class="checker"><label class="switch">
-  <input type="checkbox" id="fs_gacha">
+  <input name = "filter_options" class="filter radio" type="radio" id="fs_gacha">
   <span class="slider round"></span>
 	</label><div class="check_label">Event/Gacha</div></div></center>
 			</div>
